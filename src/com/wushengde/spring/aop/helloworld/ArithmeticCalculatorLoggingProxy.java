@@ -41,6 +41,10 @@ public class ArithmeticCalculatorLoggingProxy {
 			 */
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				
+				//测试使用一下proxy：会出现内存溢出。
+				//System.out.println(proxy.toString());
+				
 				String methodName=method.getName();
 				//日志：
 				System.out.println("At wusheng-->The method: "+methodName+" begins with: "+Arrays.asList(args));
