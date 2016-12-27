@@ -1,5 +1,8 @@
 package com.wushengde.spring.aop.helloworld;
-
+/**
+ * 此类是不带日志的计算器类，用于计算加减乘除。
+ *
+ */
 public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
 
 	@Override
