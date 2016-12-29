@@ -44,7 +44,7 @@ public class LoggingAspect {
 			//执行目标方法
 			result=pjd.proceed();
 			//相当于：后置通知或返回通知，此处可以访问到目标方法的执行结果
-			System.out.println("The method: "+methodName+ "ends");
+			System.out.println("The method: "+methodName+ "  ends");
 		} catch (Throwable e) {
 			//相当于：异常通知
 			//e.printStackTrace(); 
