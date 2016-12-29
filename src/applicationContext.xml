@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 用注解的方式配置AOP -->
+
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="com.wushengde.spring.aop.impl"></context:component-scan>
+	
+	<!-- 使AspectJ 注解生效的配置：即让AOP的配置生效。目的：自动为匹配的类生成代理对象 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!-- 
+		AspectJ常用的注解：	1.@Before：前置通知 :在目标方法开始之前执行要执行的通知
+						2.@After：后置通知:不能访问目标方法的执行结果
+						3.@AfterReturning:返回通知:可以访问到目标方法的返回值的
+						4.@AfterThrowing：异常通知:可以访问到目标方法执行过程中产生的异常，且该通知只在出现异常时执行
+						5.@Around：环绕通知:	a.环绕通知需要携带ProceedingJoinPoint类型的参数
+	  										b.环绕通知类似于动态代理的全过程
+											c.ProceedingJoinPoint类型的参数可以决定是否执行目标方法
+											d.环绕通知必须有返回值，返回值即为目标方法的返回值
+	 -->
+	 
+</beans>

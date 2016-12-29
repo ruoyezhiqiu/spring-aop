@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- 用xml方式配置AOP -->
+	
+	<!-- 配置bean -->
+	<bean id="arithmeticCalculator" class="com.wushengde.spring.aop.xml.ArithmeticCalculatorImpl"></bean>
+	<!-- 配置切面的bean -->
+	<!-- 日志切面的bean -->
+	<bean id="loggingAspect" class="com.wushengde.spring.aop.xml.LoggingAspect"></bean>
+	<!-- 验证切面的bean -->
+	<bean id="validationAspect" class="com.wushengde.spring.aop.xml.ValidationAspect"></bean>
+	
+	<!-- 配置Aop -->
+	<aop:config>
+		<!-- 配置切点表达式：用 aop:pointcut子节点配置-->
+		<aop:pointcut expression="execution(* com.wushengde.spring.aop.xml.ArithmeticCalculator.*(int , int ))" id="pointcut"/>
+		<!-- 配置切面及通知 -->
+		<aop:aspect ref="loggingAspect" order="2">
+			<aop:before method="beforeMethod" pointcut-ref="pointcut"/>
+		</aop:aspect>
+		<aop:aspect ref="validationAspect" order="1">
+			<aop:before method="validateArgs" pointcut-ref="pointcut"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

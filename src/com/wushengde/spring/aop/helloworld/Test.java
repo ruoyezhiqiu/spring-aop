@@ -7,6 +7,9 @@ public class Test {
 		
 		ArithmeticCalculator target=new ArithmeticCalculatorImpl();
 		ArithmeticCalculator proxy=new ArithmeticCalculatorLoggingProxy(target).getLoggingProxy();
+		
+		System.out.println(proxy.getClass().getName());
+		
 		int result=proxy.add(1, 2);
 		System.out.println(result);
 		
